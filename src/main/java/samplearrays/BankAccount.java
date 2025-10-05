@@ -17,6 +17,7 @@ public class BankAccount {
             System.out.println("Unsuccessful Deposit: negative value or nothing to deposit");
         }else{
             this.currentBalance += amount;
+            // if the transactions array is full keep only the most recent transactions in the fitting length
             if(this.transactionIndex >= this.transactions.length){
                 for(int i=0;i<this.transactions.length-1;i++){
                     this.transactions[i] = this.transactions[i+1];
@@ -51,7 +52,7 @@ public class BankAccount {
     public void displayTransactions(){
         System.out.println("Recent recorded transactions: ");
         for(double value:this.transactions){
-            if(value==0){
+            if(value==0){ // no more recorded transaction
                 return;
             }
             System.out.println((value>0? "Deposit: ":"Withdraw: ")+value);
